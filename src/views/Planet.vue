@@ -1,13 +1,17 @@
 <template>
   <div class="black white-text section">
     <h1>{{title}}</h1>
-    <div class="row" v-if="species.length">
-      <div class="col s12 m12 l6 offset-l3" v-for="(sp, i) in species" :key="i">
+    <div class="row" v-if="planets.length">
+      <div
+        class="col s12 m12 l6 offset-l3"
+        v-for="(planet, i) in planets.filter( planet => planet.url == `https://swapi.co/api/planets/${$route.params.id}/`)"
+        :key="i"
+      >
         <div class="card grey lighten-5">
           <div class="card-content black-text">
-            <span class="card-title">{{ sp.name}}</span>
+            <span class="card-title">{{ planet.name}}</span>
             <div class="section">
-              <FilmList :item="sp" />
+              <FilmList :item="planet" />
             </div>
           </div>
         </div>
@@ -25,15 +29,15 @@ import { mapActions } from "vuex";
 import FilmList from "@/components/FilmList";
 
 export default {
-  name: "planets",
+  name: "planet",
   data() {
     return {
-      title: "Species"
+      title: "Planet"
     };
   },
   components: { FilmList },
   computed: {
-    ...mapState(["species"]),
+    ...mapState(["planets"]),
     ...mapGetters([])
   },
   methods: {

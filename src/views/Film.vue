@@ -2,7 +2,11 @@
   <div class="black white-text section">
     <h1>{{title}}</h1>
     <div class="row" v-if="episode_order.length">
-      <div class="col s12 m12 l6 offset-l3" v-for="(film, i) in episode_order" :key="i">
+      <div
+        class="col s12 m12 l6 offset-l3"
+        v-for="(film, i) in episode_order.filter( episode => episode.episode_id == $route.params.id)"
+        :key="i"
+      >
         <div class="card grey lighten-5">
           <div class="card-content black-text">
             <table>
@@ -23,9 +27,22 @@
                 </tr>
               </tbody>
             </table>
+            <span class="flow-text">{{film.opening_crawl}}</span>
           </div>
-          <div class="card-action">
-            <router-link :to="getLink(film)">More Info</router-link>
+          <div class="row">
+            <div class="section col s12" v-if="planets.length">
+              <div class="divider"></div>
+              <List :items="planets" :currentItem="film" title="Planets" itemKey="planets" />
+            </div>
+            <div class="section col s12" v-if="planets.length">
+              <div class="divider"></div>
+              <List
+                :items="characters"
+                :currentItem="film"
+                title="Characters"
+                itemKey="characters"
+              />
+            </div>
           </div>
         </div>
       </div>
@@ -42,33 +59,23 @@ import { mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { mapMutations } from "vuex";
 import { mapActions } from "vuex";
-import mixins from "@/mixins/mixins";
+import List from "@/components/List";
 
 export default {
-  name: "home",
-  mixins: [mixins],
+  name: "Film",
   data() {
     return {
-      title: "Films"
+      title: "Film"
     };
   },
-
-  components: {},
+  components: { List },
   computed: {
     ...mapState(["films", "characters", "planets"]),
     ...mapGetters(["episode_order"])
   },
   methods: {
     ...mapMutations([]),
-    ...mapActions([]),
-    getImgUrl(url) {
-      var images = require.context("../assets/", false, /\.webp$/);
-      return images(
-        "./" +
-          url.replace("https://swapi.co/api/", "").replace(/\//g, "_") +
-          ".webp"
-      );
-    }
+    ...mapActions([])
   },
   mounted() {}
 };

@@ -7,7 +7,7 @@
         <router-link to="/">Home</router-link>&nbsp;|
         <router-link to="/planets">Planets</router-link>&nbsp;|
         <router-link to="/species">Species</router-link>&nbsp;|
-        <router-link to="/characters">Characters</router-link>
+        <router-link to="/people">People</router-link>
       </div>
     </div>
     <router-view />
@@ -16,7 +16,7 @@
 
 <style>
 #app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
+  font-family: "Avenir", Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -39,11 +39,11 @@
 
 <script>
 // @ is an alias to /src
-import { mapActions } from 'vuex';
-import mixins from '@/mixins/mixins';
+import { mapActions } from "vuex";
+import mixins from "@/mixins/mixins";
 
 export default {
-  name: 'app',
+  name: "app",
   mixins: [mixins],
   data() {
     return {};
@@ -51,7 +51,7 @@ export default {
   components: {},
   computed: {},
   methods: {
-    ...mapActions(['getFilms', 'getCharacters', 'getSpecies', 'getPlanets'])
+    ...mapActions(["getFilms", "getCharacters", "getSpecies", "getPlanets"])
   },
   created() {
     this.getFilms();

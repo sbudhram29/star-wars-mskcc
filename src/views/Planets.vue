@@ -2,22 +2,12 @@
   <div class="black white-text section">
     <h1>{{title}}</h1>
     <div class="row" v-if="planets.length">
-      <div class="col s12 m6" v-for="(planet, i) in planets" :key="i">
-        <div class="card large grey lighten-5">
+      <div class="col s12 m12 l6 offset-l3" v-for="(planet, i) in planets" :key="i">
+        <div class="card grey lighten-5">
           <div class="card-content black-text">
             <span class="card-title">{{ planet.name}}</span>
             <div class="section">
-              <div class="divider"></div>
-              <ul class="collection with-header black-text">
-                <li class="collection-header">
-                  <h4>Films</h4>
-                </li>
-                <li
-                  class="collection-item"
-                  v-for="(film,i) in films.filter(s => planet.films.includes(s.url)).map(s => s.title)"
-                  :key="'film_'+ i"
-                >{{film}}</li>
-              </ul>
+              <FilmList :item="planet" />
             </div>
           </div>
         </div>
@@ -32,6 +22,7 @@ import { mapState } from "vuex";
 import { mapGetters } from "vuex";
 import { mapMutations } from "vuex";
 import { mapActions } from "vuex";
+import FilmList from "@/components/FilmList";
 
 export default {
   name: "planets",
@@ -40,9 +31,9 @@ export default {
       title: "Planets"
     };
   },
-  components: {},
+  components: { FilmList },
   computed: {
-    ...mapState(["planets", "films"]),
+    ...mapState(["planets"]),
     ...mapGetters([])
   },
   methods: {

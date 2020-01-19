@@ -14,12 +14,28 @@ export default new Router({
       component: Home
     },
     {
-      path: '/characters',
-      name: 'characters',
+      path: '/films/:id',
+      name: 'film',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
-      component: () => import('./views/Characters.vue')
+      component: () => import('./views/Film.vue')
+    },
+    {
+      path: '/people',
+      name: 'people',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('./views/People.vue')
+    },
+    {
+      path: '/people/:id',
+      name: 'person',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('./views/Person.vue')
     },
     {
       path: '/planets',
@@ -28,6 +44,14 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: () => import('./views/Planets.vue')
+    },
+    {
+      path: '/planets/:id',
+      name: 'planet',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('./views/Planet.vue')
     },
     {
       path: '/species',

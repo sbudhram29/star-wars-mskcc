@@ -2,8 +2,8 @@
   <div class="black white-text section">
     <h1>{{title}}</h1>
     <div class="row" v-if="characters.length">
-      <div class="col s12 m6" v-for="(character, i) in characters" :key="i">
-        <div class="card large grey lighten-5">
+      <div class="col s12 m12 l6 offset-l3" v-for="(character, i) in characters" :key="i">
+        <div class="card grey lighten-5">
           <div class="card-content black-text">
             <span class="card-title">{{ character.name}}</span>
             <table>
@@ -25,17 +25,7 @@
               </tbody>
             </table>
             <div class="section">
-              <div class="divider"></div>
-              <ul class="collection with-header black-text">
-                <li class="collection-header">
-                  <h4>Films</h4>
-                </li>
-                <li
-                  class="collection-item"
-                  v-for="(film,i) in films.filter(s => character.films.includes(s.url)).map(s => s.title)"
-                  :key="'film_'+ i"
-                >{{film}}</li>
-              </ul>
+              <FilmList :item="character" />
             </div>
           </div>
         </div>
@@ -51,16 +41,18 @@ import { mapGetters } from "vuex";
 import { mapMutations } from "vuex";
 import { mapActions } from "vuex";
 
+import FilmList from "@/components/FilmList";
+
 export default {
-  name: "characters",
+  name: "people",
   data() {
     return {
-      title: "Characters"
+      title: "People"
     };
   },
-  components: {},
+  components: { FilmList },
   computed: {
-    ...mapState(["characters", "species", "planets", "films"]),
+    ...mapState(["characters", "species", "planets"]),
     ...mapGetters([])
   },
   methods: {
