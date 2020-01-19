@@ -5,6 +5,8 @@
       <div class="section white-text">
         <div class="divider"></div>
         <router-link to="/">Home</router-link>&nbsp;|
+        <router-link to="/planets">Planets</router-link>&nbsp;|
+        <router-link to="/species">Species</router-link>&nbsp;|
         <router-link to="/characters">Characters</router-link>
       </div>
     </div>
@@ -53,9 +55,9 @@ export default {
   },
   created() {
     this.getFilms();
-    this.getSpecies();
     this.getPlanets();
-    this.getCharacters();
+    this.getSpecies();
+    // this.getCharacters();
   }
 };
 </script>
