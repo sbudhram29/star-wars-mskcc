@@ -2,7 +2,7 @@
   <div class="black white-text section">
     <h1>{{title}}</h1>
     <div class="row" v-if="episode_order.length">
-      <div class="col s12 m12 l6" v-for="(film, i) in episode_order" :key="i">
+      <div class="col s12" v-for="(film, i) in episode_order" :key="i">
         <div class="card grey lighten-5">
           <div class="card-content black-text">
             <table>
@@ -25,31 +25,33 @@
             </table>
             <span class="flow-text">{{film.opening_crawl}}</span>
           </div>
-          <div class="section" v-if="characters.length">
-            <div class="divider"></div>
-            <ul class="collection with-header black-text">
-              <li class="collection-header">
-                <h4>Characters</h4>
-              </li>
-              <li
-                class="collection-item"
-                v-for="(character,i) in characters.filter(s => film.characters.includes(s.url)).map(s => s.name)"
-                :key="'character_'+ i"
-              >{{character}}</li>
-            </ul>
-          </div>
-          <div class="section" v-if="planets.length">
-            <div class="divider"></div>
-            <ul class="collection with-header black-text">
-              <li class="collection-header">
-                <h4>Planet</h4>
-              </li>
-              <li
-                class="collection-item"
-                v-for="(planet,i) in planets.filter(s => film.planets.includes(s.url)).map(s => s.name)"
-                :key="'planet_'+ i"
-              >{{planet}}</li>
-            </ul>
+          <div class="row">
+            <div class="section col s12 m6" v-if="characters.length">
+              <div class="divider"></div>
+              <ul class="collection with-header black-text">
+                <li class="collection-header">
+                  <h4>Characters</h4>
+                </li>
+                <li
+                  class="collection-item"
+                  v-for="(character,i) in characters.filter(s => film.characters.includes(s.url)).map(s => s.name)"
+                  :key="'character_'+ i"
+                >{{character}}</li>
+              </ul>
+            </div>
+            <div class="section col s12 m6" v-if="planets.length">
+              <div class="divider"></div>
+              <ul class="collection with-header black-text">
+                <li class="collection-header">
+                  <h4>Planet</h4>
+                </li>
+                <li
+                  class="collection-item"
+                  v-for="(planet,i) in planets.filter(s => film.planets.includes(s.url)).map(s => s.name)"
+                  :key="'planet_'+ i"
+                >{{planet}}</li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
