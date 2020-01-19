@@ -2,8 +2,8 @@
   <div id="app">
     <div id="nav" class="black">
       <img alt="Star Wars Logo" src="./assets/logo.png" />
-      <div class="divider"></div>
       <div class="section white-text">
+        <div class="divider"></div>
         <router-link to="/">Home</router-link>&nbsp;|
         <router-link to="/characters">Characters</router-link>
       </div>
@@ -53,9 +53,9 @@ export default {
   },
   created() {
     this.getFilms();
-    this.getCharacters();
     this.getSpecies();
     this.getPlanets();
+    this.getCharacters();
   }
 };
 </script>

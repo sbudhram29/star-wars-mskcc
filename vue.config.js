@@ -1,5 +1,5 @@
 module.exports = {
   devServer: {
-    proxy: 'https://swapi.co'
+    proxy: 'http://swapi.co'
   }
 };

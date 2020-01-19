@@ -25,9 +25,31 @@
             </table>
             <span class="flow-text">{{film.opening_crawl}}</span>
           </div>
-          <div class="card-action">
-            <a href="#">This is a link</a>
-            <a href="#">This is a link</a>
+          <div class="section" v-if="characters.length">
+            <div class="divider"></div>
+            <ul class="collection with-header black-text">
+              <li class="collection-header">
+                <h4>Characters</h4>
+              </li>
+              <li
+                class="collection-item"
+                v-for="(character,i) in characters.filter(s => film.characters.includes(s.url)).map(s => s.name)"
+                :key="'character_'+ i"
+              >{{character}}</li>
+            </ul>
+          </div>
+          <div class="section" v-if="planets.length">
+            <div class="divider"></div>
+            <ul class="collection with-header black-text">
+              <li class="collection-header">
+                <h4>Planet</h4>
+              </li>
+              <li
+                class="collection-item"
+                v-for="(planet,i) in planets.filter(s => film.planets.includes(s.url)).map(s => s.name)"
+                :key="'planet_'+ i"
+              >{{planet}}</li>
+            </ul>
           </div>
         </div>
       </div>
@@ -54,7 +76,7 @@ export default {
   },
   components: {},
   computed: {
-    ...mapState([]),
+    ...mapState(["films", "characters", "planets"]),
     ...mapGetters(["episode_order"])
   },
   methods: {

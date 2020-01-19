@@ -1,7 +1,6 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios';
-
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -31,13 +30,13 @@ export default new Vuex.Store({
   },
   actions: {
     getFilms: context => {
-      const url = 'https://swapi.co/api/films';
+      const url = 'http://localhost:8080/api/films';
       axios
         .get(url)
         .then(res => context.commit('ADD_FILMS', res.data.results))
         .catch(err => console.log(`Failed: ${err}`));
     },
-    getCharacters: (context, url = 'https://swapi.co/api/people') => {
+    getCharacters: (context, url = 'http://localhost:8080/api/people') => {
       axios
         .get(url)
         .then(res => {
@@ -48,7 +47,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(`Failed: ${err}`));
     },
-    getSpecies: (context, url = 'https://swapi.co/api/species') => {
+    getSpecies: (context, url = 'http://localhost:8080/api/species') => {
       axios
         .get(url)
         .then(res => {
@@ -59,7 +58,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(`Failed: ${err}`));
     },
-    getPlanets: (context, url = 'https://swapi.co/api/planets') => {
+    getPlanets: (context, url = 'http://localhost:8080/api/planets') => {
       axios
         .get(url)
         .then(res => {
