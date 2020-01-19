@@ -30,13 +30,13 @@ export default new Vuex.Store({
   },
   actions: {
     getFilms: context => {
-      const url = 'http://localhost:8080/api/films';
+      const url = 'https://swapi.co/api/films';
       axios
         .get(url)
         .then(res => context.commit('ADD_FILMS', res.data.results))
         .catch(err => console.log(`Failed: ${err}`));
     },
-    getCharacters: (context, url = 'http://localhost:8080/api/people') => {
+    getCharacters: (context, url = 'https://swapi.co/api/people') => {
       axios
         .get(url)
         .then(res => {
@@ -47,7 +47,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(`Failed: ${err}`));
     },
-    getSpecies: (context, url = 'http://localhost:8080/api/species') => {
+    getSpecies: (context, url = 'https://swapi.co/api/species') => {
       axios
         .get(url)
         .then(res => {
@@ -58,7 +58,7 @@ export default new Vuex.Store({
         })
         .catch(err => console.log(`Failed: ${err}`));
     },
-    getPlanets: (context, url = 'http://localhost:8080/api/planets') => {
+    getPlanets: (context, url = 'https://swapi.co/api/planets') => {
       axios
         .get(url)
         .then(res => {
