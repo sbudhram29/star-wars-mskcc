@@ -8,7 +8,7 @@
       >
         <div class="card grey lighten-5">
           <div class="card-content black-text">
-            <h1>{{character.name}}</h1>
+            <h4>{{character.name}}</h4>
             <table>
               <thead>
                 <tr>

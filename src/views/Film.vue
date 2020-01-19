@@ -1,6 +1,5 @@
 <template>
   <div class="black white-text section">
-    <h1>{{title}}</h1>
     <div class="row" v-if="episode_order.length">
       <div
         class="col s12 m12 l6 offset-l3"
@@ -9,6 +8,7 @@
       >
         <div class="card grey lighten-5">
           <div class="card-content black-text">
+            <h4>{{film.title}}</h4>
             <table>
               <thead>
                 <tr>
@@ -87,8 +87,5 @@ export default {
 }
 .flow-text {
   font-size: 1.5rem;
-}
-h1 {
-  margin-top: -3rem;
 }
 </style>

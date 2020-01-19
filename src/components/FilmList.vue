@@ -9,7 +9,7 @@
         v-for="(film,i) in films.filter(s => currentItem.films.includes(s.url))"
         :key="'film_'+ i"
       >
-        <router-link :to="getLink(film)">{{film.title}}</router-link>
+        <router-link :to="getFilmLink(film)">{{film.title}}</router-link>
       </li>
     </ul>
   </div>
